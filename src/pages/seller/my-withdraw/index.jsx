@@ -1,4 +1,5 @@
-import { Withdraw } from "@/Components/DeliveryManWithDraw/Withdraw";
+import { Withdraw } from "@/Components/Withdraw";
+
 
 export default function withdraw (){
     return <Withdraw/>
