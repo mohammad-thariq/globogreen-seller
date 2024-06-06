@@ -1,0 +1,82 @@
+import { Button } from "@/common/Button";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import style from ".././SendEmailForm/index.module.css";
+import { InputSelect } from "../../common/inputSelect";
+import { statusConstantOption } from "@/constant/statusConst";
+
+export const SellerListForm = ({
+  onClose,
+  button,
+  data,
+  onSave,
+  onUpdate,
+  loading,
+  currentSellerId,
+
+}) => {
+  const schema = Yup.object({
+    status: Yup.string().required("Status is Required"),
+  });
+  return (
+    <div className={style.wrapper}>
+      <Formik
+        initialValues={{
+          status: data?.status + 1 || "",
+        }}
+        validationSchema={schema}
+        onSubmit={(values, actions) => {
+          onUpdate
+            ? onUpdate({
+                id:currentSellerId,
+                status: values?.status - 1,
+              })
+            : onSave({
+                status: values?.status - 1,
+              });
+          actions.setSubmitting(true);
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+        }) => (
+          <form>
+            <InputSelect
+              label={"Status"}
+              onBlur={handleBlur}
+              onChange={handleChange}
+              name={"status"}
+              values={values?.status}
+              isValue
+              onData={statusConstantOption}
+            />
+            <p style={{ marginTop: "5px", marginBottom: "5px", color: "red" }}>
+              {errors.status && touched.status && errors.status}
+            </p>
+            <div className={style.btnWrapper}>
+              <Button
+                name="Close"
+                border="1px solid #23D24F"
+                color="#000"
+                onClick={onClose}
+              />
+              <Button
+                name={button}
+                bg="#23d24f"
+                type="submit"
+                color="#fff"
+                onClick={handleSubmit}
+                isSubmitting={loading}
+              />
+            </div>
+          </form>
+        )}
+      </Formik>
+    </div>
+  );
+};
