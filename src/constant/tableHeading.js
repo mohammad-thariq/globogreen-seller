@@ -223,19 +223,7 @@ export const ShippingRuleTableHeading = [
   "Action",
 ];
 
-export const WithdrawTableHeading = [
-  "SN",
-  "Seller",
-  "Method",
-  "Charge",
-  "Total Amount",
-  "Withdraw Amount",
-  "Requested Date",
-  "Approved Date",
-  "Account Information",
-  "Status",
-  "Action",
-];
+
 
 export const WithdrawMethodTableheading = [
   "SN",
@@ -280,5 +268,9 @@ export const PendingSellerTableHeading = [
   export const contactMessageTablHeading=["SN",	"Name",	"Email"	,"Phone"	,"Subject",	"Message", "Action"]
 
   export const homePageSessionTableHeading = ["Default" , "Action"]
+
+  export const WithdrawTableHeading = ["SN", "Method",	"Charge",	"Total Amount"	, "Withdraw Amount",	"Status",	"Action"]
+
+
 
   

@@ -1,35 +1,32 @@
 import { Button } from "@/common/Button";
-import {style} from "../.././LocationForm/index.module.css"
+import style from "../DeliveryManForm/index.module.css";
 import * as Yup from "yup";
 import { Formik } from "formik";
+// import { statusConstantOption} from "@/constant/statusConst";
+// import { InputSelect } from "../../common/inputSelect";
 
-export const HomePageSessionForm = ({
-  onClose,
-  currentKey,
-  data,
-  onUpdate,
-  loading,
-  button,
+export const WithdrawForm = ({
+button,
+onClose,
 }) => {
   const schema = Yup.object({
-    custom: Yup.string().required("Custom is Required"),
+  
   });
-
-  console.log(data , "dddd")
   return (
     <div className={style.wrapper}>
       <Formik
         initialValues={{
-          custom: data?.custom || "",
+          
         }}
         validationSchema={schema}
         onSubmit={(values, actions) => {
           onUpdate
             ? onUpdate({
-                key: currentKey,
-                custom: values?.custom,
+               
               })
-            : "";
+            : onSave({
+               
+              });
           actions.setSubmitting(true);
         }}
       >
@@ -42,24 +39,44 @@ export const HomePageSessionForm = ({
           handleSubmit,
         }) => (
           <form role="form" className="w-350">
-            <label>Changeable</label>
+            <label>Withdraw Method</label>
+            <div className="mb-3">
+              <select
+                className="form-select"
+                aria-label="Default select example"
+                name="country"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.country}
+              >
+                <option hidden>Select</option>
+               
+              </select>
+            </div>
+
+            <label>Withdraw Amount</label>
             <div className="mb-3">
               <input
                 type="text"
-                name="custom"
+                name="Withdraw Amount"
                 className="form-control"
-                placeholder="None"
+                placeholder="Withdraw amount"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.custom}
+                value={values.name}
               />
-              <p
-                style={{ marginTop: "5px", marginBottom: "5px", color: "red" }}
-              >
-                {errors.custom && touched.custom && errors.custom}
-              </p>
+             
             </div>
-
+            <label>Account Information</label>
+            <textarea
+             type="text"
+             name="Account Information"
+             className="form-control"
+             placeholder="Account Information"
+             onChange={handleChange}
+             onBlur={handleBlur}
+             value={values.name}
+            />
             <div className={style.btnWrapper}>
               <Button
                 name="Close"
@@ -73,7 +90,7 @@ export const HomePageSessionForm = ({
                 type="submit"
                 color="#fff"
                 onClick={handleSubmit}
-                isSubmitting={loading}
+                isSubmitting={""}
               />
             </div>
           </form>
