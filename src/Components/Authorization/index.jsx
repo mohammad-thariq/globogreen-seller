@@ -30,11 +30,11 @@ export const Authorization = () => {
                     <h3 className="font-weight-bolder text-info text-gradient">
                       Welcome back
                       <br />
-                      <img
+{/*                       <img
                         className="authLogo"
                         src="../../../assets/img/logos/globogreenlogo.png"
                         alt=""
-                      />
+                      /> */}
                     </h3>
                     <p className="mb-0">
                       Enter your email and password to sign in
