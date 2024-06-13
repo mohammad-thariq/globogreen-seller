@@ -5,28 +5,15 @@ import { Formik } from "formik";
 // import { statusConstantOption} from "@/constant/statusConst";
 // import { InputSelect } from "../../common/inputSelect";
 
-export const WithdrawForm = ({
-button,
-onClose,
-}) => {
-  const schema = Yup.object({
-  
-  });
+export const WithdrawForm = ({ button, onClose }) => {
+  const schema = Yup.object({});
   return (
     <div className={style.wrapper}>
       <Formik
-        initialValues={{
-          
-        }}
+        initialValues={{}}
         validationSchema={schema}
         onSubmit={(values, actions) => {
-          onUpdate
-            ? onUpdate({
-               
-              })
-            : onSave({
-               
-              });
+          onUpdate ? onUpdate({}) : onSave({});
           actions.setSubmitting(true);
         }}
       >
@@ -50,7 +37,6 @@ onClose,
                 value={values.country}
               >
                 <option hidden>Select</option>
-               
               </select>
             </div>
 
@@ -65,17 +51,16 @@ onClose,
                 onBlur={handleBlur}
                 value={values.name}
               />
-             
             </div>
             <label>Account Information</label>
             <textarea
-             type="text"
-             name="Account Information"
-             className="form-control"
-             placeholder="Account Information"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.name}
+              type="text"
+              name="Account Information"
+              className="form-control"
+              placeholder="Account Information"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
             />
             <div className={style.btnWrapper}>
               <Button
