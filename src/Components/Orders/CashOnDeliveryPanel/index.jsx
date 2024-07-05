@@ -20,6 +20,8 @@ export const CashOnDeliveryPanel = () => {
   const { completedOrders, deleteOrderById, updateOrderById } = new OrdersApi();
   const { data, isLoading, refetch } = useQuery(["getCodOrders"], completedOrders);
 
+  console.log(data , "cash on delivery")
+
   const { mutate, isLoading: deleteOrderStatusLoading } = useMutation(deleteOrderById, {
     onSuccess: (data, variables, context) => {
       setOpenDeletePopup(false);

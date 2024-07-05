@@ -8,8 +8,19 @@ const getToken = () => {
 };
 
 export class StockHistoryAPI {
-    stockHistory = async () =>{
-        const res = await _axios("get" ,`/stock-history?token=${getToken()}`);
+    getStockHistory = async ({queryKey}) => {
+        const res = await _axios("get", `/stock-history/${queryKey[1]}?token=${getToken()}`);
         return res;
-    }
+      };
+
+      addStockHistory = async (data) => {
+        const res = await _axios("post", `/add-stock?token=${getToken()}`, {...data});
+        return res;
+      };
+
+      deleteStockHistory = async (id) => {
+        const res = await _axios("delete", `/delete-stock/${id}?token=${getToken()}`);
+        return res;
+      };
+
 }

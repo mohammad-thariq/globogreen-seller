@@ -92,12 +92,6 @@ export const SideNavConst = {
       url: "/seller/message",
       icon: <MessageIcon sx={{ fontSize: 18 }} />,
     },
-    {
-      heading: "Visit User Dashboard",
-      url: "/seller/visit-user-dashboard",
-      icon: <DashboardIcon sx={{ fontSize: 18 }} />,
-    },
-
   ],
 };
 

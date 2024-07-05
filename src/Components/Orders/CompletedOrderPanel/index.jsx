@@ -20,6 +20,8 @@ export const CompletedOrderPanel = () => {
   const { completedOrders, deleteOrderById, updateOrderById } = new OrdersApi();
   const { data, isLoading,  refetch } = useQuery(["getCompletedOrders"], completedOrders);
 
+  console.log(data , "completed order")
+
   const { mutate, isLoading: deleteOrderStatusLoading } = useMutation(deleteOrderById, {
     onSuccess: (data, variables, context) => {
       setOpenDeletePopup(false);

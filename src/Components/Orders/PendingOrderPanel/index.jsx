@@ -20,6 +20,8 @@ export const PendingOrderPanel = () => {
   const { pendingOrders, deleteOrderById, updateOrderById } = new OrdersApi();
   const { data, isLoading, refetch } = useQuery(["getPendingOrders"], pendingOrders);
 
+  console.log(data , "pending Data")
+
   const { mutate: deletePendingorder, isLoading: deletePendingOrderStatusLoading } = useMutation(
     deleteOrderById,
     {

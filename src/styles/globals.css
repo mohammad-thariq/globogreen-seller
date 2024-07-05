@@ -103,8 +103,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 500px;
+  width: 300px;
   text-align: center;
+}
+@media only screen and (min-width: 550px) {
+  .noData-message-wrapper  {
+    width:500px
+  }
 }
 
 .noData-message {

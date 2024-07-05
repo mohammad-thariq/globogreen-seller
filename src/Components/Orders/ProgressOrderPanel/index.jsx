@@ -23,6 +23,8 @@ export const ProgressOrderPanel = () => {
     progressOrders
   );
 
+  console.log(data , "Progress Order data")
+
   const { mutate, isLoading: deleteOrderStatusLoading } = useMutation(deleteOrderById, {
     onSuccess: (data, variables, context) => {
       setOpenDeletePopup(false);

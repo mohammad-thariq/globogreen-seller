@@ -5,15 +5,30 @@ import { Formik } from "formik";
 // import { statusConstantOption} from "@/constant/statusConst";
 // import { InputSelect } from "../../common/inputSelect";
 
-export const WithdrawForm = ({ button, onClose }) => {
-  const schema = Yup.object({});
+export const WithdrawForm = ({ loading ,button, onClose, onUpdate, onSave, onwithdraw }) => {
+  console.log(onwithdraw, "......");
+  const schema = Yup.object({
+    method_id: Yup.string().required("Method ID is Required"),
+    withdraw_amount: Yup.string().required("Withdraw Amount ID is Required"),
+    account_info: Yup.string().required("Account Info is Required"),
+  });
   return (
     <div className={style.wrapper}>
       <Formik
-        initialValues={{}}
+        initialValues={{
+          method_id: "",
+          withdraw_amount: "",
+          account_info: "",
+        }}
         validationSchema={schema}
         onSubmit={(values, actions) => {
-          onUpdate ? onUpdate({}) : onSave({});
+          onUpdate
+            ? onUpdate({})
+            : onSave({
+                method_id: values?.method_id,
+                withdraw_amount: values?.withdraw_amount,
+                account_info: values?.account_info,
+              });
           actions.setSubmitting(true);
         }}
       >
@@ -25,43 +40,81 @@ export const WithdrawForm = ({ button, onClose }) => {
           handleBlur,
           handleSubmit,
         }) => (
-          <form role="form" className="w-350">
+          <form className="w-350">
             <label>Withdraw Method</label>
             <div className="mb-3">
               <select
                 className="form-select"
                 aria-label="Default select example"
-                name="country"
+                name="method_id"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.country}
+                value={values.method_id}
               >
-                <option hidden>Select</option>
+                <option>select</option>
+
+                {onwithdraw?.methods?.map((item, idx) => (
+                  <option key={idx}>{item.name}</option>
+                ))}
               </select>
+              <p
+                style={{
+                  marginTop: "5px",
+                  marginBottom: "5px",
+                  color: "red",
+                }}
+              >
+                {errors.method_id && touched.method_id && errors.method_id}
+              </p>
             </div>
 
             <label>Withdraw Amount</label>
             <div className="mb-3">
               <input
                 type="text"
-                name="Withdraw Amount"
+                name="withdraw_amount"
                 className="form-control"
                 placeholder="Withdraw amount"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.name}
+                value={values.withdraw_amount}
               />
+              <p
+                style={{
+                  marginTop: "5px",
+                  marginBottom: "5px",
+                  color: "red",
+                }}
+              >
+                {errors.withdraw_amount &&
+                  touched.withdraw_amount &&
+                  errors.withdraw_amount}
+              </p>
             </div>
             <label>Account Information</label>
-            <textarea
-              type="text"
-              name="Account Information"
-              className="form-control"
-              placeholder="Account Information"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.name}
-            />
+            <div className="mb-3">
+              <textarea
+                type="text"
+                name="account_info"
+                className="form-control"
+                placeholder="Account Information"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.account_info}
+              />
+              <p
+                style={{
+                  marginTop: "5px",
+                  marginBottom: "5px",
+                  color: "red",
+                }}
+              >
+                {errors.account_info &&
+                  touched.account_info &&
+                  errors.account_info}
+              </p>
+            </div>
+
             <div className={style.btnWrapper}>
               <Button
                 name="Close"
@@ -75,7 +128,7 @@ export const WithdrawForm = ({ button, onClose }) => {
                 type="submit"
                 color="#fff"
                 onClick={handleSubmit}
-                isSubmitting={""}
+                isSubmitting={loading}
               />
             </div>
           </form>

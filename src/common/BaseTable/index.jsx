@@ -90,6 +90,7 @@ export const BaseTable = ({
   onServiceData,
   onHomepageTitleData,
   onMailTemplateData,
+  
 
   // tableDatas ends
 

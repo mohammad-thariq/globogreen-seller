@@ -20,6 +20,8 @@ export const DeliveredOrderPanel = () => {
   const { deliveryOrder, deleteOrderById, updateOrderById } = new OrdersApi();
   const { data, refetch, isLoading } = useQuery(["getDeliveryOrder"], deliveryOrder);
 
+  console.log(data , "Delivery order")
+
   const { mutate: deleteDeleveryOrder, isLoading: deleteDeliveryOrderStatusLoading} = useMutation(
     deleteOrderById,
     {

@@ -20,6 +20,8 @@ export const DeclinedOrderPanel = () => {
   const { declinedOrders, deleteOrderById, updateOrderById } = new OrdersApi();
   const { data, isLoading, refetch } = useQuery(["getDeclinedOrders"], declinedOrders);
 
+  console.log(data , "Declined Order")
+
   const { mutate, isLoading: deleteOrderStatusLoading } = useMutation(deleteOrderById, {
     onSuccess: (data, variables, context) => {
       setOpenDeletePopup(false);

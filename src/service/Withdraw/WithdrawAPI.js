@@ -9,6 +9,11 @@ const getToken = () => {
 
 export class withdrawAPI {
   // Withdraw Method
+  withdrawMethods = async () => {
+    const res = await _axios("get", `/withdraw-methods?token=${getToken()}`);
+    return res;
+  };
+
   withdrawAccount = async () => {
     const res = await _axios("get", `/my-withdraw?token=${getToken()}`);
     return res;

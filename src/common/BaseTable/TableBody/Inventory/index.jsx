@@ -38,7 +38,7 @@ export const Inventory = ({onInventoryData, handleDeleteCity}) => {
               <td className="align-middle text-center cursor-pointer">
                 <span>
                   <VisibilityIcon sx={{ fontSize: 20 }} 
-                  onClick={()=> router.push(`/admin/stock-history/${item.id}`)}
+                  onClick={()=> router.push(`/seller/stock-history/${item.id}`)}
                   />
                 </span>
               </td>

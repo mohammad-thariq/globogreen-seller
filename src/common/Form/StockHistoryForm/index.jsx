@@ -1,32 +1,32 @@
 import { Button } from "@/common/Button";
-
 import { Formik } from "formik";
-import { useState } from "react";
+import * as Yup from "yup";
 
 export const StockHistoryForm = ({
   onSave,
-  onClose,
-  currentBrandsId,
-  data,
-  onUpdate,
   loading,
   button,
 }) => {
-  
+  const schema = Yup.object({
+    product_id: Yup.string().required("Product ID is Required"),
+    stock_in: Yup.string().required("Quantity is Required"),
+  });
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
           <div className="card p-5 mb-4 justify-content-fs">
             <Formik
-              initialValues={{}}
-              // validationSchema={schema}
+              initialValues={{
+                product_id: "",
+                stock_in: "",
+              }}
+              validationSchema={schema}
               onSubmit={(values, actions) => {
-                onUpdate
-                  ? onUpdate({
-                      id: currentBrandsId,
-                    })
-                  : onSave({});
+               onSave({
+                    product_id: values?.product_id,
+                    stock_in: values?.stock_in,
+                  });
                 actions.setSubmitting(true);
               }}
             >
@@ -39,16 +39,16 @@ export const StockHistoryForm = ({
                 handleSubmit,
               }) => (
                 <form role="form">
-                  <label>Product</label>
+                  <label>Product ID</label>
                   <div className="mb-3">
                     <input
-                      type="text"
-                      name="product"
+                      type="number"
+                      name="product_id"
                       className="form-control"
-                      placeholder="Product"
+                      placeholder="Product Id"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.product}
+                      value={values?.product_id}
                     />
                     <p
                       style={{
@@ -57,19 +57,19 @@ export const StockHistoryForm = ({
                         color: "red",
                       }}
                     >
-                      {errors.name && touched.name && errors.name}
+                      {errors.product_id && touched.product_id && errors.product_id}
                     </p>
                   </div>
                   <label>Stock In Quantity</label>
                   <div className="mb-3">
                     <input
-                      type="name"
-                      name="slug"
+                      type="number"
+                      name="stock_in"
                       className="form-control"
-                      placeholder="Slug"
+                      placeholder="Stock In"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.slug}
+                      value={values?.stock_in}
                     />
                     <p
                       style={{
@@ -78,7 +78,7 @@ export const StockHistoryForm = ({
                         color: "red",
                       }}
                     >
-                      {errors.slug && touched.slug && errors.slug}
+                      {errors.stock_in && touched.stock_in && errors.stock_in}
                     </p>
                   </div>
 

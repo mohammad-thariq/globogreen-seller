@@ -9,28 +9,43 @@ import { ToastifyFailed, ToastifySuccess } from "@/common/Toastify";
 import { WithdrawTableHeading } from "@/constant/tableHeading";
 import { withdrawAPI } from "@/service/Withdraw/WithdrawAPI";
 import { useState } from "react";
+import { useMutation, useQuery } from "react-query";
 
 export const Withdraw = () => {
   const [openCreatePopup, setOpenCreatePopup] = useState(false);
-  
+
   const {
     withdrawAccount,
+    withdrawMethods,
     withdrawAccountInfo,
     createWithdraw,
   } = new withdrawAPI();
-  const { data, isLoading, refetch } = useQuery(["withdrawAccount", "withdrawAccountInfo"], withdrawAccount, withdrawAccountInfo);
-
+  const { data, isLoading, refetch } = useQuery(
+    ["withdrawAccount"],
+    withdrawAccount
+  );
+  const {
+    data: widthDrawAccInfoData,
+    isLoading: withdrawAccountInfoLoading,
+    refetch: refetchWithdrawAccount,
+  } = useQuery(["withdrawAccountInfo"], withdrawAccountInfo);
+  const { data: withdraw, isLoadings: withdrawLoading } = useQuery(
+    ["withdrawMethods"],
+    withdrawMethods
+  );
+  console.log(data, "Withdraw data");
+  console.log(widthDrawAccInfoData, "widthDrawAccInfoData");
+  console.log(withdraw, "withdrawMethods");
 
   const { mutate: createWithdrawMutate, isLoading: createWithdrawLoading } =
     useMutation(createWithdraw, {
       onSuccess: (data, variables, context) => {
-        setOpenCreatePopup(false);
+        setOpenCreatePopup(false)
         ToastifySuccess(data?.notification);
         refetch();
       },
       onError: (data, variables, context) => {
-        setOpenCreatePopup(true);
-        refetch();
+        setOpenCreatePopup(true)
         ToastifyFailed(data?.notification);
       },
     });
@@ -66,12 +81,15 @@ export const Withdraw = () => {
       <BaseTable tableHeadings={WithdrawTableHeading} />
       {openCreatePopup && (
         <Popup open={openCreatePopup} onClose={handleAddWithdraw}>
-          <WithdrawForm button="Add" onClose={handleAddWithdraw} 
-          onSave={createWithdrawMutate}
-          loading={createWithdrawLoading}/>
+          <WithdrawForm
+            button="Add"
+            onClose={handleAddWithdraw}
+            onwithdraw={withdraw}
+            onSave={createWithdrawMutate}
+            loading={createWithdrawLoading}
+          />
         </Popup>
       )}
-      
     </>
   );
 };
