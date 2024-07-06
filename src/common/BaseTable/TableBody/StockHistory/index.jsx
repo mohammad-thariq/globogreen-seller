@@ -1,12 +1,11 @@
-import { TruncateString } from "@/utils/truncateString";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import { router } from "next/router";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-export const StockHistory = ({onStockHistoryData}) => {
+
+export const StockHistory = ({onStockHistoryData, onDelete}) => {
     return (
       <>
         {onStockHistoryData &&
-          onStockHistoryData?.products
+          onStockHistoryData?.histories
           ?.map((item, index) => (
             <tr key={index}>
               <td className="align-middle text-center">
@@ -15,36 +14,27 @@ export const StockHistory = ({onStockHistoryData}) => {
                 </span>
               </td>
               <td className="align-middle text-center">
-                <span className="text-secondary text-sm font-weight-bold" title={item.name}>
-                  {/* {item.name}  */}
-                {TruncateString(item.name)}
+                <span className="text-secondary text-sm font-weight-bold">
+                  {item?.stock_in}
                 </span>
               </td>
               <td className="align-middle text-center">
                 <span className="text-secondary text-sm font-weight-bold">
-                  {item?.sku}
+                  {item?.created_at.slice(0,10)}
                 </span>
               </td>
-              <td className="align-middle text-center">
-                <span className="text-secondary text-sm font-weight-bold">
-                  {item?.sku}
-                </span>
-              </td>
-              <td className="align-middle text-center">
-                <span className="text-secondary text-sm font-weight-bold">
-                  {item?.sold_qty}
-                </span>
-              </td>
-              <td className="align-middle text-center">
+             
+              <td className="align-middle text-center cursor-pointer">
                 <span>
-                  <VisibilityIcon sx={{ fontSize: 20 }} 
-                  onClick={()=> router.push(`/admin/stock-history/${item.id}`)}
+                  <DeleteIcon sx={{ fontSize: 20 }} 
+                  onClick={() =>onDelete(item.id)}
                   />
                 </span>
               </td>
             </tr>
           ))}
       </>
+     
     );
   };
   

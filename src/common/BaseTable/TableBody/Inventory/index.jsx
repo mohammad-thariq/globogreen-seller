@@ -2,7 +2,7 @@ import { TruncateString } from "@/utils/truncateString";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { router } from "next/router";
 
-export const Inventory = ({onInventoryData, handleDeleteCity}) => {
+export const Inventory = ({onInventoryData}) => {
     return (
       <>
         {onInventoryData &&
@@ -47,4 +47,3 @@ export const Inventory = ({onInventoryData, handleDeleteCity}) => {
       </>
     );
   };
-  

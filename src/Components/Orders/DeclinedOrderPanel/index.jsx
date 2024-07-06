@@ -71,9 +71,7 @@ export const DeclinedOrderPanel = () => {
     return <Loader />
   }
 
-  if(data && !data?.orders?.data.length >= 1){
-    return <NoDataFound />
-  }
+ 
 
 
   return (
@@ -87,6 +85,7 @@ export const DeclinedOrderPanel = () => {
             onNavigate={handleNavigateOrder}
             onUpdate={handleDeliveryForm}
             tableHeadings={AllOrderTableHeadings}
+            length={data?.orders?.data?.length == 0}
             isShown
           />
           {openDeletePopup && (

@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["ragulaust.dev"],
+    domains: ["43.205.128.32"],
   },
 };
 

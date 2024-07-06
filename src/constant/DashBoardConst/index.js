@@ -3,50 +3,50 @@ export const DashboardConst = {
         {
             id: 1,
             name: "Total Order",
-            count: "1200",
+            countKey: "totalOrder",
             icon: "ni ni-money-coins text-lg opacity-10"
         },
         {
             id: 2,
             name: "Pending Orders",
-            count: "0",
+            countKey: "totalPendingOrder",
             icon: "ni ni-world text-lg opacity-10"
         },
         {
             id: 3,
             name: "Declined Order",
-            count: "0",
+            countKey: "totalDeclinedOrder",
             icon: "ni ni-paper-diploma text-lg opacity-10"
         },
         {
             id: 4,
             name: "Total User",
-            count: "120",
+            countKey: "users",
             icon: "ni ni-cart text-lg opacity-10"
         },
         {
             id: 5,
             name: "Total Product",
-            count: "1200",
+            countKey: "total_product",
             icon: "ni ni-money-coins text-lg opacity-10"
         },
         {
             id: 6,
             name: "Total Sales",
-            count: "0",
+            countKey: "totalProductSale",
             icon: "ni ni-world text-lg opacity-10"
         },
         {
             id: 7,
-            name: "Total Block",
-            count: "0",
+            name: "Total Sellers",
+            countKey: "sellers",
             icon: "ni ni-paper-diploma text-lg opacity-10"
         },
         {
             id: 8,
             name: "Complete Order",
-            count: "120",
+            countKey: "totalCompleteOrder",
             icon: "ni ni-cart text-lg opacity-10"
         }
     ]
-}
+};

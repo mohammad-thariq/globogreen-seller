@@ -18,8 +18,8 @@ export class StockHistoryAPI {
         return res;
       };
 
-      deleteStockHistory = async (id) => {
-        const res = await _axios("delete", `/delete-stock/${id}?token=${getToken()}`);
+      deleteStockHistory = async (data) => {
+        const res = await _axios("delete", `/delete-stock/${data.id}?token=${getToken()}`);
         return res;
       };
 

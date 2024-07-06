@@ -27,9 +27,11 @@ export const DashboardPanel = () => {
   const [openDeliveryStatusForm, setOpenDeliveryStatusForm] = useState(false);
   const [currentOrderId, setCurrentOrderId] = useState(false);
   const [currentOrderData, setCurrentOrderData] = useState(null);
+  const [trackingCardData, setTrackingCardData] = useState(null);
   const { getDashBoard } = new DashBoardApi();
   const { deleteOrderById, updateOrderById } = new OrdersApi();
   const { data, refetch } = useQuery("dashboard", getDashBoard);
+  console.log(data , "dash")
 
   const { mutate, isLoading } = useMutation(deleteOrderById, {
     onSuccess: (data, variables, context) => {
@@ -276,26 +278,42 @@ export const DashboardPanel = () => {
     };
   }, []);
 
+  const updateTrackingCardData = useCallback(() => {
+    if (data) {
+      const updatedTrackingCardData = DashboardConst.trackingCardData.map(
+        (item) => ({
+          ...item,
+          count: data[item.countKey] ?? 0,
+        })
+      );
+      setTrackingCardData(updatedTrackingCardData);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    updateTrackingCardData();
+  }, [updateTrackingCardData]);
+
   return (
     <>
       <Breadcrumb currentPage={"Dashboard"} serachEnable />
       <div className="container-fluid py-4">
         <div className="row">
-          {DashboardConst?.trackingCardData?.slice(0, 4).map((i) => (
+          {trackingCardData?.map((i) => (
             <TrackingCard key={i?.id} {...i} />
           ))}
         </div>
-        <div className="row mt-4">
+        {/* <div className="row mt-4">
           <ChartBar chartBarsRef={chartBarsRef} />
           <ChartLine chartLineRef={chartLineRef} />
-        </div>
-        <div className="row mt-4">
-          {DashboardConst?.trackingCardData?.slice(4, 8).map((i) => (
+        </div> */}
+        {/* <div className="row mt-4">
+          {map((i) => (
             <TrackingCard key={i?.id} {...i} />
           ))}
-        </div>
+        </div> */}
         <div className="row mt-4">
-          {data?.todayOrders?.length >= 1 ? (
+         
             <BaseTable
               tableTitle="Today's Order"
               tableHeadings={AllOrderTableHeadings}
@@ -303,16 +321,9 @@ export const DashboardPanel = () => {
               handleDeleteOrder={handleDeleteOrder}
               handleNavigateOrder={handleNavigateOrder}
               handleDeliveryForm={handleDeliveryForm}
+              length={data?.todayOrders?.length == 0}
             />
-          ) : (
-            <>
-              {" "}
-              <div className="card-header pb-0">
-                <h5> Today Orders</h5>
-              </div>
-              <NoDataFound noHeader/>
-            </>
-          )}
+       
         </div>
       </div>
       {openDeletePopup && (

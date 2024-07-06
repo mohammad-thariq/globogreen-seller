@@ -116,7 +116,7 @@ export class productCateoriesAPI {
 
   deleteProductById = async (data) => {
     const res = await _axios(
-      "post",
+      "delete",
       `/product/delete?token=${getToken()}`,
       data
     );

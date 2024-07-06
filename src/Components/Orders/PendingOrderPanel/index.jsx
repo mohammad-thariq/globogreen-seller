@@ -76,9 +76,9 @@ export const PendingOrderPanel = () => {
     return <Loader />
   }
 
-  if(data && !data?.orders?.data?.length >= 1){
-    return <NoDataFound />
-  }
+  // if(data && !data?.orders?.data?.length >= 1){
+  //   return <NoDataFound />
+  // }
 
   return (
     <>
@@ -89,6 +89,7 @@ export const PendingOrderPanel = () => {
             onNavigate={handleNavigateOrder}
             onUpdate={handleDeliveryForm}
             tableHeadings={AllOrderTableHeadings}
+            length={data?.orders?.data?.length == 0}
             isShown
           />
       {openDeletePopup && (

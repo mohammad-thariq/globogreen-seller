@@ -70,9 +70,7 @@ export const CashOnDeliveryPanel = () => {
     return <Loader />
   }
 
-  if(data && !data?.orders?.data?.length >= 1){
-    return <NoDataFound />
-  }
+ 
 
   return (
     <>
@@ -83,6 +81,7 @@ export const CashOnDeliveryPanel = () => {
         onNavigate={handleNavigateOrder}
         onUpdate={handleDeliveryForm}
         tableHeadings={AllOrderTableHeadings}
+        length={data?.orders?.data?.length == 0}
         isShown
       />
       {openDeletePopup && (

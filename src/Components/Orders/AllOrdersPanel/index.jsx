@@ -72,9 +72,9 @@ export const AllOrdersPanel = () => {
     return <Loader />
   }
 
-  if(data && !data?.orders?.data?.length >= 1){
-    return <NoDataFound />
-  }
+  // if(data && !data?.orders?.data?.length >= 1){
+  //   return <NoDataFound />
+  // }
 
   return (
     <>
@@ -86,6 +86,7 @@ export const AllOrdersPanel = () => {
         onUpdate={handleDeliveryForm}
         tableHeadings={AllOrderTableHeadings}
         isShown
+        length={data?.orders?.data?.length == 0}
       />
       {openDeletePopup && (
         <Popup open={openDeletePopup} onClose={handleDeleteOrder}>

@@ -40,6 +40,7 @@ import { Sliders } from "./TableBody/ManageWebsite/Sliders";
 import { Service } from "./TableBody/ManageWebsite/Service";
 import { HomePageSessionTitle } from "./TableBody/ManageWebsite/HomePageSessionTitle";
 import { MailTemplate } from "./TableBody/EmailConfig/EmailTemplate/mainTemplate";
+import { NoDataFound } from "../NoDataFound";
 // import ReactPaginate from "react-paginate";
 // import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 // import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
@@ -48,6 +49,7 @@ export const BaseTable = ({
   ref,
   tableHeadings,
   tableTitle,
+  length,
 
   // tableDatas starts
   onTableData,
@@ -90,6 +92,7 @@ export const BaseTable = ({
   onServiceData,
   onHomepageTitleData,
   onMailTemplateData,
+
   
 
   // tableDatas ends
@@ -123,11 +126,12 @@ export const BaseTable = ({
               <h5>{tableTitle}</h5>
             </div>
             <br />
+            {length && <NoDataFound noHeader />}
             <div className="card-body px-0 pt-0 pb-2" ref={ref}>
               <div className="table-responsive p-0">
                 <table className="table align-items-center mb-0">
                   <thead className="text-sm">
-                    <tr className="font-weight-bold">{tableHeadingList}</tr>
+                  {!length && <tr className="font-weight-bold">{tableHeadingList}</tr>}
                   </thead>
                   <tbody>
                     {isShown && (
@@ -243,7 +247,7 @@ export const BaseTable = ({
                       <Inventory onInventoryData={onInventoryData} />
                     )}
                     {onStockHistoryData && (
-                      <StockHistory onStockHistoryData={onStockHistoryData} />
+                      <StockHistory onStockHistoryData={onStockHistoryData} onDelete={onDelete}/>
                     )}
 
                     {onDeliveryManData && (
