@@ -10,9 +10,7 @@ export const ProductsReport = () => {
   const { productReport } = new productCateoriesAPI();
   const { data, isLoading, refetch } = useQuery(["productReport"], productReport);
   
-  if (data && data) {
-    return <NoDataFound />
-  }
+ 
 
   if (isLoading) {
     return <Loader />
@@ -20,7 +18,7 @@ export const ProductsReport = () => {
   return (
     <>
       <Breadcrumb currentPage={"Products Report"} serachEnable />
-        <BaseTable tableHeadings={productReportTableHeading} />
+        <BaseTable tableHeadings={productReportTableHeading} length={data?.reports.length == 0} />
     
     </>
   );

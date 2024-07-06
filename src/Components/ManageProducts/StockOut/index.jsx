@@ -10,9 +10,7 @@ export const StockOut = () => {
   const { stockOut } = new productCateoriesAPI();
   const { data, isLoading, refetch } = useQuery(["stockOut"], stockOut);
  
-  if (data && data) {
-    return <NoDataFound />
-  }
+ 
 
   if (isLoading) {
     return <Loader />
@@ -21,7 +19,7 @@ export const StockOut = () => {
   return (
     <>
       <Breadcrumb currentPage={"Stock Out"} serachEnable />
-        <BaseTable tableHeadings={stockOutTableheading} />
+        <BaseTable tableHeadings={stockOutTableheading} length={data?.products.length == 0}/>
     </>
   );
 };

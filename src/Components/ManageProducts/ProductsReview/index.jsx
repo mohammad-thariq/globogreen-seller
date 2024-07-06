@@ -9,9 +9,7 @@ export const ProductReviews = () => {
   const { productReview } = new productCateoriesAPI();
   const { data, isLoading, refetch } = useQuery(["productReview"], productReview);
 
-  if (data && data) {
-    return <NoDataFound />
-  }
+ 
 
   if (isLoading) {
     return <Loader />
@@ -20,7 +18,7 @@ export const ProductReviews = () => {
   return (
     <>
       <Breadcrumb currentPage={"Products Reviews"} serachEnable />
-        <BaseTable/>
+        <BaseTable length={data?.reviews.length == 0}/>
     </>
   );
 };

@@ -78,7 +78,8 @@ export const Withdraw = () => {
           onClick={handleAddWithdraw}
         />
       </div>
-      <BaseTable tableHeadings={WithdrawTableHeading} />
+      <BaseTable tableHeadings={WithdrawTableHeading} 
+      length={data?.withdraws.length == 0}/>
       {openCreatePopup && (
         <Popup open={openCreatePopup} onClose={handleAddWithdraw}>
           <WithdrawForm
