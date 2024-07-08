@@ -197,6 +197,7 @@ export const BaseTable = ({
                       <BrandsTable
                         onBrandsData={onBrandsData}
                         onUpdate={onUpdate}
+                        onDelete={onDelete}
                       />
                     )}
                     {onSpecKeyData && (

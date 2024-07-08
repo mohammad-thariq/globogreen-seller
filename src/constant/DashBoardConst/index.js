@@ -50,3 +50,34 @@ export const DashboardConst = {
         }
     ]
 };
+
+
+export const MyProfileData = {
+    profileDataCard :[
+        {
+            id: 1,
+            name: "Total Product Sale",
+            countKey: "totalSoldProduct",
+            icon: "ni ni-money-coins text-lg opacity-10"
+        },
+        {
+            id: 2,
+            name: "Total Withdraw",
+            countKey: "totalWithdraw",
+            icon: "ni ni-money-coins text-lg opacity-10"
+        },
+        {
+            id: 3,
+            name: "Total Amount",
+            countKey: "totalAmount",
+            icon: "ni ni-money-coins text-lg opacity-10"
+        },
+        {
+            id: 4,
+            name: "Total Pending Withdraw",
+            countKey: "totalPendingWithdraw",
+            icon: "ni ni-money-coins text-lg opacity-10"
+        },
+
+    ]
+}

@@ -55,10 +55,10 @@ export const SideNavConst = {
           name: "Brands",
           url: "/seller/brands",
         },
-        {
-          name: "Product Bulk Import",
-          url: "/seller/product-bulk",
-        },
+        // {
+        //   name: "Product Bulk Import",
+        //   url: "/seller/product-bulk",
+        // },
         {
           name: "Products",
           url: "/seller/products",

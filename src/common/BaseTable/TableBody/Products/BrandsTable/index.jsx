@@ -1,9 +1,10 @@
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Image from "next/image";
 import { BaseUrls } from "../../../../../../env";
 import { ProductStatus } from "@/common/BaseTable/TableColumn/ProductStatus";
 
-export const BrandsTable = ({ onBrandsData, onUpdate }) => {
+export const BrandsTable = ({ onBrandsData, onUpdate, onDelete }) => {
   return (
     <>
       {onBrandsData &&
@@ -45,6 +46,12 @@ export const BrandsTable = ({ onBrandsData, onUpdate }) => {
                 <EditNoteIcon
                   sx={{ fontSize: 25 }}
                   onClick={() => onUpdate(item.id)}
+                />
+              </span>{" "}
+              <span>
+                <DeleteIcon
+                  sx={{ fontSize: 20 }}
+                  onClick={() => onDelete(item.id)}
                 />
               </span>
             </td>

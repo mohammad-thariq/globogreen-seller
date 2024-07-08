@@ -16,17 +16,25 @@ export class productCateoriesAPI {
   createBrands = async (data) => {
     const res = await _axios(
       "post",
-      `/product-brand/store?token=${getToken()}`,
-      data
+      `/product-brand?token=${getToken()}`,
+      data, "multipart/form-data"
     );
     return res;
   };
 
   updateBrands = async (data) => {
     const res = await _axios(
-      "post",
+      "put",
       `/product-brand/update?token=${getToken()}`,
       data
+    );
+    return res;
+  };
+
+  deleteBrands = async (data) => {
+    const res = await _axios(
+      "delete",
+      `/product-brand/${data.id}?token=${getToken()}`
     );
     return res;
   };
@@ -38,6 +46,11 @@ export class productCateoriesAPI {
 
   products = async () => {
     const res = await _axios("get", `/product?token=${getToken()}`);
+    return res;
+  };
+
+  deleteProducts = async (data) => {
+    const res = await _axios("delete", `/product/${data.id}?token=${getToken()}`);
     return res;
   };
 

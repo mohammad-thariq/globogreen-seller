@@ -10,14 +10,16 @@ import { ToastifyFailed, ToastifySuccess } from "@/common/Toastify";
 import { BrandsTableHeading } from "@/constant/tableHeading";
 import { NoDataFound } from "@/common/NoDataFound";
 import { Loader } from "@/common/Loader";
+import { DeleteItem } from "@/common/Popup/DeleteItem";
 
 export const Brands = () => {
   const [createbrand, setCreateBrand] = useState(false);
   const [updateBrand, setUpdateBrand] = useState(false);
+  const [openDeletePopup, setOpenDeletePopup] = useState(false);
   const [currentBrandsId, setCurrentBrandsId] = useState(null);
   const [currentBrandsDataId, setCurrentBrandsDataId] = useState(null);
 
-  const { brands, createBrands, updateBrands } = new productCateoriesAPI();
+  const { brands, createBrands, updateBrands, deleteBrands } = new productCateoriesAPI();
 
   const { data, isLoading, refetch } = useQuery(["brands"], brands);
 
@@ -62,6 +64,30 @@ export const Brands = () => {
     setUpdateBrand(!updateBrand);
   };
 
+  const { mutate: DeleteBrandMutate, isLoading: deleteBrandLoading } =
+  useMutation(deleteBrands, {
+    onSuccess: (data, variables, context) => {
+      setOpenDeletePopup(false);
+      ToastifySuccess(data?.message);
+      refetch();
+    },
+    onError: (data, variables, context) => {
+      setOpenDeletePopup(true);
+      ToastifyFailed(data?.message);
+    },
+  });
+
+  const handleDeleteBrand =(id)=>{
+    setCurrentBrandsId(id)
+    setOpenDeletePopup(!openDeletePopup);
+  }
+
+  
+
+  const handleOnDeleteBrand = () => {
+    DeleteBrandMutate({ id: currentBrandsId });
+  };
+
   if (data && !data) {
     return <NoDataFound />
   }
@@ -88,6 +114,7 @@ export const Brands = () => {
         tableHeadings={BrandsTableHeading}
         onBrandsData={data}
         onUpdate={handleUpdateBrand}
+        onDelete={handleDeleteBrand}
       />
       {createbrand && (
         <Popup open={createbrand} onClose={handleCreateBrand}>
@@ -111,6 +138,15 @@ export const Brands = () => {
           />
         </Popup>
       )}
+      {openDeletePopup && (
+        <Popup open={openDeletePopup} onClose={handleDeleteBrand}>
+          <DeleteItem onClose={handleDeleteBrand}
+           onClick={handleOnDeleteBrand}
+           loading={deleteBrandLoading}
+          />
+        </Popup>
+      )}
+
     </>
   );
 };

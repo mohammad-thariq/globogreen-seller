@@ -14,7 +14,7 @@ import { useState } from "react";
 import { useMutation, useQuery } from "react-query";
 
 export const Products = () => {
-  const { products, brands, specificationKey, createProducts, updateProducts, deleteProductById } = new productCateoriesAPI();
+  const { products, brands, specificationKey, createProducts, updateProducts, deleteProductById, deleteProducts } = new productCateoriesAPI();
 
   const { productCategory, productChildCategory, productSubCategory } =
     new ManageCategoriesApi();
@@ -71,15 +71,15 @@ export const Products = () => {
     },
   });
 
-  const { mutate: deleteProductMutate, isLoading: deleteProductLoading } = useMutation(deleteProductById, {
+  const { mutate: deleteProductMutate, isLoading: deleteProductLoading } = useMutation(deleteProducts, {
     onSuccess: (data, variables, context) => {
       setOpenDeletePopup(false);
-      ToastifySuccess(data?.notification);
+      ToastifySuccess(data?.message);
       refetch();
     },
     onError: (data, variables, context) => {
       setOpenDeletePopup(true);
-      ToastifyFailed(data?.notification);
+      ToastifyFailed(data?.message);
     },
   });
 

@@ -5,9 +5,9 @@ import { LocalStorageHelper } from "@/utils/localStorage";
 import { router } from "next/router";
 import LogoutIcon from "@mui/icons-material/Logout";
 import React, { useEffect, useState } from "react";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import { SideBarNav } from "../SideBar";
 import { Reload } from "@/helper/base";
+import ShopIcon from '@mui/icons-material/Shop';
 import InventoryIcon from "@mui/icons-material/Inventory";
 
 export const Breadcrumb = ({ currentPage, serachEnable }) => {
@@ -101,12 +101,11 @@ export const Breadcrumb = ({ currentPage, serachEnable }) => {
                   </a>
                 </button>
                 <div className="dropdown-content">
-                  <a onClick={() => router.push("/admin/profile")}>
-                    <i className="fa fa-user me-sm-1"></i> Profile
+                  <a onClick={() => router.push("/seller/my-profile")}>
+                    <i className="fa fa-user me-sm-1"></i> My Profile
                   </a>
-                  <a onClick={() => router.push("/admin/admin")}>
-                    <AdminPanelSettingsIcon sx={{ fontSize: "20px" }} /> Admin
-                    List
+                  <a onClick={() => router.push("/seller/my-shop")}>
+                    <ShopIcon sx={{ fontSize: "20px" }} /> My Shop
                   </a>
                   <a>
                     <button className="logout-btn" onClick={logOut}>
