@@ -30,7 +30,7 @@ export const MyProfileForm = ({ data }) => {
               <div>
                 <label>balance</label>
                 <>
-                  <p>{0}</p>
+                  <p>{data?.totalAmount}</p>
                 </>
               </div>
             </div>

@@ -223,8 +223,6 @@ export const ShippingRuleTableHeading = [
   "Action",
 ];
 
-
-
 export const WithdrawMethodTableheading = [
   "SN",
   "Name",
@@ -246,31 +244,104 @@ export const PendingSellerTableHeading = [
   "Action",
 ];
 
- export const sellerWithdrawTableHeading =["SN",	"Seller",	"Method"	,"Charge",	"Total Amount",	"Withdraw Amount",	"Status"	,"Action"]
+export const sellerWithdrawTableHeading = [
+  "SN",
+  "Seller",
+  "Method",
+  "Charge",
+  "Total Amount",
+  "Withdraw Amount",
+  "Status",
+  "Action",
+];
 
- export const withdrawMethodPayTableHeading =["SN",	"Name"	,"Minimum Amount",	"Maximum Amount",	"Charge",	"Status",	"Action"]
+export const withdrawMethodPayTableHeading = [
+  "SN",
+  "Name",
+  "Minimum Amount",
+  "Maximum Amount",
+  "Charge",
+  "Status",
+  "Action",
+];
 
- export const customerListTableHeading = ["SN",	"Name"	,"Email"	,"Image"	,"Status"	,"Action"]
+export const customerListTableHeading = [
+  "SN",
+  "Name",
+  "Email",
+  "Image",
+  "Status",
+  "Action",
+];
 
- export const SellerListTableHeading =["SN",	"Seller Name",	"Email",	"Image"	,"Status",	"Action"]
+export const SellerListTableHeading = [
+  "SN",
+  "Seller Name",
+  "Email",
+  "Image",
+  "Status",
+  "Action",
+];
 
- export const sliderTableHeading = ["Image",	"Serial",	"Badge" , "Title One", "Title Two", "Product Link","Status",	"Action"]
+export const sliderTableHeading = [
+  "Image",
+  "Serial",
+  "Badge",
+  "Title One",
+  "Title Two",
+  "Product Link",
+  "Status",
+  "Action",
+];
 
- export const serviceTableHeading= ["SN"	,"Title",	"Icon"	,"Description",	"Status",	"Action"]
+export const serviceTableHeading = [
+  "SN",
+  "Title",
+  "Icon",
+  "Description",
+  "Status",
+  "Action",
+];
 
- export const emailTemplateTableHeading =["SN",	"Email Template",	"Subject"	,"Action"]
+export const emailTemplateTableHeading = [
+  "SN",
+  "Email Template",
+  "Subject",
+  "Action",
+];
 
- export const emailMainTemplateTableHeading =["Variable",	"Meaning"]
+export const emailMainTemplateTableHeading = ["Variable", "Meaning"];
 
- export const smsTemplateTableHeading = [
-  "SN",	"Sms", "Template",	"Action"]
+export const smsTemplateTableHeading = ["SN", "Sms", "Template", "Action"];
 
-  export const contactMessageTablHeading=["SN",	"Name",	"Email"	,"Phone"	,"Subject",	"Message", "Action"]
+export const contactMessageTablHeading = [
+  "SN",
+  "Name",
+  "Email",
+  "Phone",
+  "Subject",
+  "Message",
+  "Action",
+];
 
-  export const homePageSessionTableHeading = ["Default" , "Action"]
+export const homePageSessionTableHeading = ["Default", "Action"];
 
-  export const WithdrawTableHeading = ["SN", "Method",	"Charge",	"Total Amount"	, "Withdraw Amount",	"Status",	"Action"]
+export const WithdrawTableHeading = [
+  "SN",
+  "Method",
+  "Charge",
+  "Total Amount",
+  "Withdraw Amount",
+  "Status",
+  "Action",
+];
 
-
-
-  
+export const productVariantTableHeading = ["SN", "Name", "Status", "Action"];
+export const productVariantItemTableHeading = [
+  "SN",
+  "Variant",
+  "Item",
+  "Price",
+  "Action",
+];
+export const productDetailsTableHeading = ["Image" , "Status", "Action"]

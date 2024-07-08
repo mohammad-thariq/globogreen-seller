@@ -10,10 +10,12 @@ import { ToastifyFailed, ToastifySuccess } from "@/common/Toastify";
 import { productTableHeading } from "@/constant/tableHeading";
 import { ManageCategoriesApi } from "@/service/manageCategories/manageCategoriesAPI";
 import { productCateoriesAPI } from "@/service/productCategories/productCategoriesAPI";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useMutation, useQuery } from "react-query";
 
 export const Products = () => {
+  const router = useRouter();
   const { products, brands, specificationKey, createProducts, updateProducts, deleteProductById, deleteProducts } = new productCateoriesAPI();
 
   const { productCategory, productChildCategory, productSubCategory } =
@@ -102,6 +104,13 @@ export const Products = () => {
     deleteProductMutate({ id: currentProductId });
   };
 
+  const handleNavigateProductDetail = (id, icon) => {
+    if (icon === "product-variant") {
+      router.push(`/seller/products/product-variant/${id}`);
+    } else {
+      router.push(`/seller/products/${id}`);
+    }
+  };
   const getCategoryToSelect = category?.categories?.map((i) => ({
     value: i?.id,
     name: i?.name,
@@ -151,6 +160,7 @@ export const Products = () => {
         onProductData={data}
         onUpdate={handleUpdateProduct}
         onDelete={handleDeleteProduct}
+        onNavigate={handleNavigateProductDetail}
       />
       {createProduct && (
         <Popup open={createProduct} onClose={handleCreateProduct}>

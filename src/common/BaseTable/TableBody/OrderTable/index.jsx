@@ -10,7 +10,7 @@ export const OrderTable = ({onTableData, onUpdate,onDelete,onNavigate }) => {
           <tr key={index}>
             <td className="align-middle text-center">
               <span className="text-secondary text-xs font-weight-bold">
-                {item.id}
+                {index + 1}
               </span>
             </td>
             <td className="align-middle text-center">

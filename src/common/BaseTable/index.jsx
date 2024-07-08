@@ -41,6 +41,9 @@ import { Service } from "./TableBody/ManageWebsite/Service";
 import { HomePageSessionTitle } from "./TableBody/ManageWebsite/HomePageSessionTitle";
 import { MailTemplate } from "./TableBody/EmailConfig/EmailTemplate/mainTemplate";
 import { NoDataFound } from "../NoDataFound";
+import { ProductDetailGallery } from "./TableBody/Products/ProductDetailGalleryTable";
+import { ProductVariant } from "./TableBody/Products/ProductVariant";
+import { ProductVariantItem } from "./TableBody/Products/ProductVariantItem";
 // import ReactPaginate from "react-paginate";
 // import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 // import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
@@ -92,8 +95,9 @@ export const BaseTable = ({
   onServiceData,
   onHomepageTitleData,
   onMailTemplateData,
-
-  
+  onProductDetailsData,
+  onProductVariantData,
+  onProductVariantItemData,
 
   // tableDatas ends
 
@@ -131,7 +135,9 @@ export const BaseTable = ({
               <div className="table-responsive p-0">
                 <table className="table align-items-center mb-0">
                   <thead className="text-sm">
-                  {!length && <tr className="font-weight-bold">{tableHeadingList}</tr>}
+                    {!length && (
+                      <tr className="font-weight-bold">{tableHeadingList}</tr>
+                    )}
                   </thead>
                   <tbody>
                     {isShown && (
@@ -219,6 +225,32 @@ export const BaseTable = ({
                         onProductData={onProductData}
                         onUpdate={onUpdate}
                         onDelete={onDelete}
+                        onNavigate={onNavigate}
+                      />
+                    )}
+
+                    {onProductDetailsData && (
+                      <ProductDetailGallery
+                        onProductDetailsData={onProductDetailsData}
+                        onDelete={onDelete}
+                        onUpdate={onUpdate}
+                      />
+                    )}
+
+                    {onProductVariantData && (
+                      <ProductVariant
+                        onProductVariantData={onProductVariantData}
+                        onDelete={onDelete}
+                        onUpdate={onUpdate}
+                        onNavigate={onNavigate}
+                      />
+                    )}
+
+                    {onProductVariantItemData && (
+                      <ProductVariantItem
+                        onProductVariantItemData={onProductVariantItemData}
+                        onDelete={onDelete}
+                        onUpdate={onUpdate}
                       />
                     )}
                     {onCountryData && (
@@ -248,7 +280,10 @@ export const BaseTable = ({
                       <Inventory onInventoryData={onInventoryData} />
                     )}
                     {onStockHistoryData && (
-                      <StockHistory onStockHistoryData={onStockHistoryData} onDelete={onDelete}/>
+                      <StockHistory
+                        onStockHistoryData={onStockHistoryData}
+                        onDelete={onDelete}
+                      />
                     )}
 
                     {onDeliveryManData && (
@@ -372,25 +407,36 @@ export const BaseTable = ({
                     )}
                     {onEmailTemplateData && (
                       <EmailTemplate
-                      onNavigate={onNavigate}
+                        onNavigate={onNavigate}
                         onEmailTemplateData={onEmailTemplateData}
                       />
                     )}
-                      {onMailTemplateData && (
-                      <MailTemplate
-                      onMailTemplateData={onMailTemplateData}
-                      />
+                    {onMailTemplateData && (
+                      <MailTemplate onMailTemplateData={onMailTemplateData} />
                     )}
                     {onSmsConfigData && (
                       <SmsTemplate onSmsConfigData={onSmsConfigData} />
                     )}
                     {onSliderData && (
-                     <Sliders onSliderData={onSliderData} onDelete={onDelete}
-                     onUpdate={onUpdate}/>
+                      <Sliders
+                        onSliderData={onSliderData}
+                        onDelete={onDelete}
+                        onUpdate={onUpdate}
+                      />
                     )}
-                    {onServiceData && (<Service onServiceData={onServiceData} onDelete={onDelete}
-                     onUpdate={onUpdate}/>)}
-                     {onHomepageTitleData && (<HomePageSessionTitle onHomepageTitleData={onHomepageTitleData} onUpdate={onUpdate}/>)}
+                    {onServiceData && (
+                      <Service
+                        onServiceData={onServiceData}
+                        onDelete={onDelete}
+                        onUpdate={onUpdate}
+                      />
+                    )}
+                    {onHomepageTitleData && (
+                      <HomePageSessionTitle
+                        onHomepageTitleData={onHomepageTitleData}
+                        onUpdate={onUpdate}
+                      />
+                    )}
                   </tbody>
                 </table>
               </div>

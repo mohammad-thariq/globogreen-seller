@@ -102,14 +102,20 @@ export const Breadcrumb = ({ currentPage, serachEnable }) => {
                 </button>
                 <div className="dropdown-content">
                   <a onClick={() => router.push("/seller/my-profile")}>
-                    <i className="fa fa-user me-sm-1"></i> My Profile
+                    {/* <i className="fa fa-user me-sm-1"></i> */}
+                     My Profile
                   </a>
                   <a onClick={() => router.push("/seller/my-shop")}>
-                    <ShopIcon sx={{ fontSize: "20px" }} /> My Shop
+                    {/* <ShopIcon sx={{ fontSize: "20px" }} /> */}
+                     My Shop
+                  </a>
+                  <a onClick={() => router.push("/seller/change-password")}>
+                    Change Password
                   </a>
                   <a>
                     <button className="logout-btn" onClick={logOut}>
-                      <LogoutIcon sx={{ color: "red", fontSize: "18px" }} /> Log
+                      {/* <LogoutIcon sx={{ color: "red", fontSize: "18px" }} />  */}
+                      Log
                       Out
                     </button>
                   </a>

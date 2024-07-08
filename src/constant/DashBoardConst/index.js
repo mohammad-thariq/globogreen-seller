@@ -74,7 +74,7 @@ export const MyProfileData = {
         },
         {
             id: 4,
-            name: "Total Pending Withdraw",
+            name: "Pending Withdraw",
             countKey: "totalPendingWithdraw",
             icon: "ni ni-money-coins text-lg opacity-10"
         },

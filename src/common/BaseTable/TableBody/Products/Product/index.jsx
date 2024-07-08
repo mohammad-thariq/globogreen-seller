@@ -1,5 +1,7 @@
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CollectionsIcon from "@mui/icons-material/Collections";
+import AllInboxIcon from "@mui/icons-material/AllInbox";
 import Image from "next/image";
 import { BaseUrls } from "../../../../../../env";
 import { ProductType } from "@/common/BaseTable/TableColumn/ProductType";
@@ -9,6 +11,7 @@ export const Product = ({
   onProductData,
   onUpdate,
   onDelete,
+  onNavigate,
 }) => {
   return (
     <>
@@ -57,12 +60,28 @@ export const Product = ({
             </td>
 
             <td className="align-middle text-center cursor-pointer">
+
               <span>
                 <EditNoteIcon
                   sx={{ fontSize: 25 }}
                   onClick={() => onUpdate(item.id)}
                 />
               </span>{" "}
+              <span>
+                <CollectionsIcon
+                  titleAccess="Product Gallery"
+                  sx={{ fontSize: 20 }}
+                  onClick={() => onNavigate(item.id, "product-gallery")}
+                />
+              </span>{" "}
+              <span>
+                <AllInboxIcon
+                  titleAccess="Product Variant"
+                  sx={{ fontSize: 20 }}
+                  onClick={() => onNavigate(item.id, "product-variant")}
+                />
+              </span>{" "}
+
               <span>
                 <DeleteIcon
                   sx={{ fontSize: 20 }}

@@ -49,6 +49,114 @@ export class productCateoriesAPI {
     return res;
   };
 
+  productsById = async ({ queryKey }) => {
+    const res = await _axios(
+      "get",
+      `/product-gallery/${queryKey[1]}?token=${getToken()}`
+    );
+    return res;
+  };
+
+  createProductGalleryById = async (data) => {
+    const res = await _axios(
+      "post",
+      `/store-product-gallery?token=${getToken()}`,
+      data,
+      "multipart/form-data"
+    );
+    return res;
+  };
+
+  updateProductGalleryStatus = async (data) => {
+    const res = await _axios(
+      "put",
+     `/product-gallery-status/${data.id}?token=${getToken()}`
+    );
+    return res;
+  };
+
+  
+  deleteProductGalleryById = async (data) => {
+    const res = await _axios(
+      "delete",
+     `/delete-product-image/${data.id}?token=${getToken()}`
+    );
+    return res;
+  };
+
+  productVariantById = async ({ queryKey }) => {
+    const res = await _axios(
+      "get",
+      `/product-variant/${queryKey[1]}?token=${getToken()}`
+    );
+    return res;
+  };
+
+  createProductVariant = async (data) => {
+    const res = await _axios(
+      "post",
+      `/store-product-variant?token=${getToken()}`,
+      data,
+      "multipart/form-data"
+    );
+    return res;
+  };
+
+  updateProductVariant = async (data) => {
+    const res = await _axios(
+      "put",
+      `/update-product-variant/${data.id}?token=${getToken()}`,
+      data
+    );
+    return res;
+  };
+
+  
+  deleteProductVariantById = async (data) => {
+    const res = await _axios(
+      "delete",
+      `/delete-product-variant/${data.id}?token=${getToken()}`
+    );
+    return res;
+  };
+
+  productVariantItemById = async ({ queryKey }) => {
+    const res = await _axios(
+      "get",
+      `/product-variant-item/?product_id=${queryKey[1]}&variant_id=${queryKey[2]}&token=${getToken()}`
+    );
+    return res;
+  };
+
+  createProductVariantItem = async (data) => {
+    const res = await _axios(
+      "post",
+      `/store-product-variant-item?token=${getToken()}`,
+      data,
+      "multipart/form-data"
+    );
+    return res;
+  };
+
+  updateProductVariantItem = async (data) => {
+    const res = await _axios(
+      "put",
+      `/update-product-variant-item/${data.id}?token=${getToken()}`,
+      data
+    );
+    return res;
+  };
+
+  
+  deleteProductVariantItemById = async (data) => {
+    const res = await _axios(
+      "delete",
+      `/delete-product-variant-item/${data.id}?token=${getToken()}`
+    );
+    return res;
+  };
+  
+
   deleteProducts = async (data) => {
     const res = await _axios("delete", `/product/${data.id}?token=${getToken()}`);
     return res;
