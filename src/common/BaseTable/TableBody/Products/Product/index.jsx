@@ -56,6 +56,27 @@ export const Product = ({
               </span>
             </td>
             <td className="align-middle text-center">
+              <span className="text-secondary text-sm font-weight-bold">
+              {"-"}
+              </span>
+            </td>
+            <td className="align-middle text-center">
+              <span className="text-secondary text-sm font-weight-bold">
+              {"-"}
+              </span>
+            </td>
+            <td className="align-middle text-center">
+              <span className="text-secondary text-sm font-weight-bold">
+              {"-"}
+              </span>
+            </td>
+            <td className="align-middle text-center">
+              <span className="text-secondary text-sm font-weight-bold">
+              {"-"}
+              </span>
+            </td>
+
+            <td className="align-middle text-center">
               <ProductStatus status={item?.status} />
             </td>
 
