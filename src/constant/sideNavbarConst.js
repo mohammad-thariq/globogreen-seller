@@ -63,18 +63,18 @@ export const SideNavConst = {
           name: "Products",
           url: "/seller/products",
         },
-        {
-          name: "Stock Out",
-          url: "/seller/stock-out",
-        },
+        // {
+        //   name: "Stock Out",
+        //   url: "/seller/stock-out",
+        // },
         {
           name: "Products Review",
           url: "/seller/products-review",
         },
-        {
-          name: "Products Report",
-          url: "/seller/products-report",
-        },
+        // {
+        //   name: "Products Report",
+        //   url: "/seller/products-report",
+        // },
       ],
     },
     {
